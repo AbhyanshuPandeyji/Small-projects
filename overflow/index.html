@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Scrorable bar with overflow concept</title>
+        <link rel="stylesheet" href="index.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+    <body>
+        <!-- code works in this site just not in my side the ecommerce site -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+        <div>
+            <p>Its a file that shows the power of using the overflow property
+                            it works like the bar under the amazon search bar to navigate through
+                            different pages with links like mobile and cart page
+            </p>
+            <p>
+                ::--webkit-scrollbar - to work with the scrollbar comes in the content in like a box component
+                
+                            overflow: - to display the things only iside the within rage of page
+                            and not create a scroll bar and display content seperated from page
+                            if you define a certain width and height the overflow create a box for
+                            displying the overflow content to navigate done by the auto or the
+                            property to be defined when only want to reach the certain distance
+                            in overflow content
+                
+                            auto; - used in the scrollbar to make it usable to scroll the item with
+                            the help of a scroll bar to navigate the content outside or overflowing
+                            through the page
+                
+                            line-height: - heigth to define the height between the lines of pages
+                            vertically
+            </p>
+        </div>
+
+        <div class="wrapper">
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+        </div>
+
+        <!-- example of a vertical overflow -->
+        <div class="wrapper-v">
+            <div class="box-y">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit semper felis, eget posuere est ornare
+                            sit amet. Curabitur aliquet, enim vel ornare hendrerit, tellus metus sagittis sapien, ac consectetur nisl
+                            enim in nulla. Integer finibus nisi a vehicula aliquet. Nunc interdum dolor tortor, ut consequat mi
+                            fermentum vitae. Sed pharetra aliquam elit, viverra blandit turpis. Aliquam libero ex, fringilla vitae
+                            tincidunt eu, lobortis a lorem. Duis condimentum, ipsum et molestie ultricies, odio orci pulvinar purus, et
+                            ornare eros felis in elit. Suspendisse volutpat felis porttitor lorem varius, quis dictum turpis dignissim.
+                            Curabitur ac massa lectus. Duis ex diam, porta ac dignissim at, luctus vitae felis. Etiam molestie, sapien
+                            non sodales mattis, eros risus eleifend quam, a fringilla ante nulla ut purus. Donec ut nisl eu mi
+                            vestibulum ultricies.
+                
+                            Morbi tincidunt ex eget ultricies cursus. Nullam in accumsan felis. Aliquam fringilla ex nunc, a varius nunc
+                            feugiat sed. Donec ut nisi ut leo convallis luctus id at mi. Vestibulum et tempus nunc. Aliquam erat
+                            volutpat. Donec porttitor elit quis semper porta. Etiam at vulputate odio. Vivamus sed cursus risus, eget
+                            rhoncus odio. Suspendisse vehicula tellus vestibulum neque egestas, vel pharetra ipsum facilisis. Curabitur
+                            condimentum scelerisque lacinia. Proin bibendum consequat elementum. Class aptent taciti sociosqu ad litora
+                            torquent per conubia nostra, per inceptos himenaeos. Vivamus urna odio, ultricies in scelerisque non, rutrum
+                            et ex. Fusce eget dictum eros. Phasellus augue diam, fermentum id porta et, scelerisque at metus.
+                
+                            Quisque sagittis risus massa, eu maximus sapien vulputate cursus. Nullam blandit tellus lacus, a mattis
+                            dolor venenatis vel. Quisque luctus bibendum tortor, nec accumsan sem tristique nec. Nullam sit amet tellus
+                            commodo, pellentesque metus vel, dignissim diam. In commodo non libero vitae interdum. Vivamus eget bibendum
+                            enim. Morbi condimentum, nisl sed interdum ultricies, massa risus luctus est, non euismod nibh orci et nunc.
+                
+                            Sed magna nisl, ornare nec justo a, consectetur finibus mi. Suspendisse non nisi vitae dolor mollis cursus.
+                            Ut nec semper nisl, eget ornare massa. Nunc tincidunt dolor lacus, eget convallis felis sodales nec. Quisque
+                            dignissim sem hendrerit, sagittis elit et, consequat metus. Nunc vitae lectus rhoncus, rutrum leo non,
+                            laoreet ipsum. Nunc accumsan, odio vitae rutrum lacinia, neque risus finibus tortor, at egestas purus eros
+                            nec felis. Praesent neque odio, blandit eu tristique vulputate, molestie eu quam. Morbi commodo pharetra
+                            nisl. Integer sit amet ex a urna gravida dignissim. Praesent ac est ut odio dignissim volutpat at et enim.
+                            Sed quis leo odio. Sed tempus, massa a venenatis faucibus, velit lectus placerat ligula, nec tristique
+                            tortor erat eget lorem. Proin tincidunt elit sit amet pulvinar porttitor.
+                            Curabitur vel dictum massa. Aenean sodales mattis elit, ac bibendum erat porta sit amet. Mauris maximus
+                            magna vel gravida porta. Nam fermentum, justo in vestibulum fringilla, lorem lectus feugiat urna, non
+                            consequat lacus lectus nec dolor. Sed pharetra cursus sem, vel tincidunt purus consectetur id. Praesent
+                            sagittis scelerisque tellus, a efficitur nibh bibendum et. Pellentesque consequat augue ut magna imperdiet,
+                            a bibendum diam pulvinar. In porttitor sodales orci at commodo. Morbi nunc est, dignissim sit amet diam at,
+                            maximus dignissim felis. Nullam non mattis turpis, ut fermentum urna. Vestibulum tincidunt, ipsum sit amet
+                            varius cursus, arcu dolor ullamcorper leo, sed sagittis dolor arcu eget lectus. Maecenas vitae egestas
+                            lectus, sit amet consectetur sapien.
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

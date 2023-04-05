@@ -1,0 +1,51 @@
+.wrapper {
+    max-height: 120px;
+    display: flex;
+    overflow-x: auto;
+}
+
+.wrapper::-webkit-scrollbar {
+    /* to make the page been scrolled by the boxes and not the bar */
+    width: 0;
+}
+
+.wrapper .box {
+    height: 110px;
+    /* define min width to make it overflow in page it will go out and create a slider if the page 
+    width is small then the define in it  */
+    /* overflow create the thing going outside to be not displayed or be displayed by sliding a scroller */
+
+    min-width: 110px;
+    margin: 2px;
+    text-align: center;
+    background-color: #ddd;
+    /* didnt put iot there before - defines the deistance between two line vertically*/
+    line-height: 110px;
+}
+
+
+.wrapper-v {
+    height: 400px;
+    width: 400px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    overflow-y: auto;
+    /* for testing diffrent overflow */
+    /* only content which could fit into predifined size */
+    /* overflow:hidden; */
+    /* content showing outside the box like a content dosent fitted in a webside page */
+    /* overflow:visible; */
+    /* gives a scroll bar in both direction */
+    /* overflow:scroll; */
+
+}
+
+.wrapper-v::-webkit-scrollbar {
+    width: 3px;
+    background-color: #ddd;
+
+}
+
+.wrapper-v::-webkit-scrollbar-thumb {
+    background-color: red;
+}

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Todo's list app</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    </head>
+    <body>
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Todo's list</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Items
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container my-4">
+            <h2 class="text-center">Todo's list</h2>
+            <!-- todo's list section -->
+            <!-- <form> for not wanting to submit form -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title">
+                <div id="add-item-to-list" class="form-text">Add an item to the list</div>
+            </div>
+            <!-- use form group -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control my-4" id="description" rows="5"></textarea>
+
+            </div>
+
+            <button id="add" class="btn btn-primary">Add to list</button>
+            <button class="btn btn-danger " onclick="clearStorage()">Clear list</button>
+            <!-- </form> -->
+
+            <!-- for styling and inputting items -->
+            <div id="items" class="my-4">
+                <h2>Your items</h2>
+                <!-- need it into tabular form  -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sno</th>
+                            <th scope="col">Item Title</th>
+                            <th scope="col">Item Description</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>You need coffee
+                            </td>
+                            <td>Its a great way to be get up</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">Delete todo</button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+        <script>
+
+            // update function to start the add todo
+            function getAndUpdate() {
+                console.log("updating items...");
+                // value takes value form the input of the value in the thing
+                let tit = document.getElementById("title").value;
+                let desc = document.getElementById("description").value;
+                // its null by default // now after it runs it will store data in an array
+                if (localStorage.getItem('itemsJson') == null) { // an empty array to add unlimited items in it
+                    itemJsonArray = [];
+                    itemJsonArray.push([tit, desc]); // to push items into the array
+                    localStorage.setItem('itemJson', JSON.stringify(itemJsonArray)); // itemJson is our local storage name - setting the item json into an array of the list by adding the json stringify and adding it to the storage
+                } else {
+                    // if its not null
+                    // to take it as a sting andd then parse - to get the last updated item and work after it
+                    itemJsonArrayStr = localStorage.getItem('itemsJson')
+
+                    itemJsonArray = JSON.parse(itemJsonArrayStr);
+                    // these 2 line are in both used to push into array and to set items in the array or local storage (of itemJson named) from the array of itemJsonarray
+                    itemJsonArray.push([tit, desc]);
+                    localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
+                }
+                // invocation of the update function to populate the display area of the todo's items go to function to populate the display view of the todo item not just in the storage
+                updated();
+            }
+
+
+            // for displaying data of the todo's item
+            function updated() { // doing the same thing is above just not takeing the actual values by dom
+                if (localStorage.getItem('itemsJson') == null) {
+                    itemJsonArray = [];
+                    localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+                } else {
+                    itemJsonArrayStr = localStorage.getItem('itemsJson')
+                    itemJsonArray = JSON.parse(itemJsonArrayStr);
+                }
+                // to Populate the table - showing the added todo's for now
+                let tableBody = document.getElementById("tableBody");
+                // an empty sting to add data given by user
+                let str = "";
+                // for run and render the array  without looping  - element search element of the array and index find their indexes
+                itemJsonArray.forEach((element, index) => { // to display in the form of the list every time it updates it could be utilize better by using react when it could be used as a component then it don't have to written here
+                    str += `
+                    <tr>
+                    <th scope="row">${
+                        index + 1
+                    }</th>
+                    <td>${
+                        element[0]
+                    }</td>
+                    <td>${
+                        element[1]
+                    }</td> 
+                    <td><button class="btn btn-sm btn-danger" onclick="deleted(${index})">Delete</button></td> 
+                    </tr>`;
+                });
+                // changing the inner html of the tabeuler form of the display(dom in index - table) to the newly given display of the table
+                tableBody.innerHTML = str;
+            }
+
+
+            // for adding todo items
+            add = document.getElementById('add');
+            add.addEventListener("click", getAndUpdate); // will invoke function to populate data and in that a function called updated will be called to populate the display
+            updated();
+            // to call initially to display already putted array to new user
+
+            // for deleting one item from the list of todo's
+            function deleted(itemIndex) { // display in console the todo display to be deleted index
+                console.log("Deleted", itemIndex)
+                // fetching the string and the parsed array  - because the item have to be present to be deleted
+                itemJsonArrayStr = localStorage.getItem('itemsJson')
+                itemJsonArray = JSON.parse(itemJsonArrayStr);
+
+                // splice method to delete an item form array
+                itemJsonArray.splice(itemIndex, 1);
+                // syntax splice(index of element , no of element to be deleted form )
+                // it will run but add array while deleting and it will be with empty for that we need to separate te different functions
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
+                // calling the update to update the data of the todo list after deleting
+                updated();
+
+            }
+
+
+            // clears storage to the zero
+            function clearStorage() { // confirm asks for permission if you want to delete this array like alert but the ok and cancel
+                if (confirm("Do you really want to clear?")) {
+                    console.log('Clearing the storage')
+                    // clears the storage in the array
+                    localStorage.clear();
+                    // update the list
+                    updated();
+                }
+            }
+        </script>
+
+    </body>
+</html>

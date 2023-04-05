@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive navbar using Html and Css</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="javascript" href="index.js"> -->
+</head>
+
+<body>
+    <header>
+        <!-- nav could also be used as a parent tag -->
+        <div class="navbar">
+            <!-- if using the div in every section it will divide it into the block element -->
+            <!-- and if in the block you will have to define in the inline display -->
+            <div class="logo">
+                <a href="#">Res Navbar using html css</a>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="#">Goto1</a>
+                </li>
+                <li>
+                    <a href="#">Goto2</a>
+                </li>
+                <li>
+                    <a href="#">Goto3</a>
+                </li>
+                <li>
+                    <a href="#">Goto4</a>
+                </li>
+                <li>
+                    <a href="#">Goto5</a>
+                </li>
+                <li>
+                    <a href="#">Goto6</a>
+                </li>
+            </ul>
+            <a href="#" class="action-btn">Get started</a>
+            <div class="toggle_btn">
+                <a href="#"><i class="fa-solid fa-bars"></i></a>
+            </div>
+        <div>
+
+         <!-- -> Now for displaying same content when media query fire and 
+            hamburger button is been clicked
+            -> then display the links in new style in block column drection flex for mobiles
+            this could be easier when applied the javascript 
+            -> the js will just display when clicked the navbar and it will active when clicked when funtion runs
+            -> when it runs its going to take id and define the tasks like when active active navbar
+            -> when clicked on another button called close it will close the navbar
+            -> its been performed by the styling navbar when the id navbar and active or close is on
+            -> if active it will display block and the bar will come from the direction or size and side on which style you provide
+            -> if form top to bottom or from side (left - right ) to other side it will 
+            be half of page with sticky( in both cases is best )
+            and the navbar will show in designed fashined too much css
+             (every element that should be dependent will have to be displayed and styled in the right manner)
+             will required but that will give you much more control over your navbar you can use bootstrap instead but it will also require
+             active and close class not to toggle the navbar but definig the active height and size of the navbar
+            ( learn how to create javascript event listener and handler and how to crete hanmburger button)
+        -->
+        <div class="dropdown_menu">
+            <ul>    
+            <li>
+                    <a href="#">Goto1</a>
+                </li>
+                <li>
+                    <a href="#">Goto2</a>
+                </li>
+                <li>
+                    <a href="#">Goto3</a>
+                </li>
+                <li>
+                    <a href="#">Goto4</a>
+                </li>
+                <li>
+                    <a href="#">Goto5</a>
+                </li>
+                <li>
+                    <a href="#">Goto6</a>
+                </li>
+                <li>
+                    <a href="#" class="action-btn">Get started</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- javascript required for the control of the navbar -->
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn');
+const toggleBtnicon = document.querySelector('.toggle_btn i');
+const dropDownMenu = document.querySelector('.dropdown_menu');
+
+// .onclick is the inline define funtion runner
+toggleBtn.onclick = function () { 
+    /* Allows for manipulation of element's class content attribute 
+     as a set of whitespace-separated tokens through a DOMTokenList object.*/
+     
+     /* toggle adds a toggle effect on which element applied to like an active selector add() function
+     If force is not given, "toggles" token, removing it if it's present and adding it if it's not present. If force is true, adds token (same as add()). If force is false, removes token (same as remove()).
+
+     Returns true if token is now present, and false otherwise.
+     
+     Throws a "SyntaxError" DOMException if token is empty.
+     
+     Throws an "InvalidCharacterError" DOMException if token contains any spaces.
+     */
+     dropDownMenu.classList.toggle('open');
+    // .contains() Returns true if token is present, and false otherwise.
+     const isOpen = dropDownMenu.classList.contains('open');
+
+    //  shifts between button icon x to ham with the use ternary operator
+     toggleBtnicon.classList = isOpen 
+     ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'
+
+}
+    </script>
+</body>
+
+</html>

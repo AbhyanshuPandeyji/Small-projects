@@ -1,0 +1,115 @@
+*,*::after , *::before{
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+}
+
+body{
+    background: linear-gradient(to right , hsl(200,100%,50%), hsl(175,100%,50%));
+    /* to center everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.clock{
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    border: 5px solid black;
+    /* to make number relative to the clock  */
+    position: relative;
+}
+
+.clock .number{
+    /* to adjust every number position differently */
+    --rotation: 0;
+    /* for numbers to be adjust according to the clock */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* this will cover the whole size of our clock */
+    /* background-color: red; */
+    /* to get our numbers in the center of the clock */
+    text-align: center;
+    /* to align the numbers right on the sides of the clock */
+    /* it will just rotate that entire rectangle red */
+    /* transform: rotate(30deg);  */
+    /* so we need different value for our our number in here to rotate - we use variable */
+    transform: rotate(var(--rotation));
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+
+.clock .number1 { --rotation: 30deg; }
+.clock .number2 { --rotation: 60deg; }
+.clock .number3 { --rotation: 90deg; }
+.clock .number4 { --rotation: 120deg; }
+.clock .number5 { --rotation: 150deg; }
+.clock .number6 { --rotation: 180deg; }
+.clock .number7 { --rotation: 210deg; }
+.clock .number8 { --rotation: 240deg; }
+.clock .number9 { --rotation: 270deg; }
+.clock .number10 { --rotation: 300deg; }
+.clock .number11 { --rotation: 330deg; }
+
+
+
+.clock .hand {
+    --rotation: 0;
+    position: absolute;
+    /* for having it dead center in the clock */
+    bottom: 50%;
+    left: 50%;
+    background-color: black;
+    border: 1px solid white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* for rotation around the center and not around the bottom */
+    /* transform-origin set the transform to the point from where the transform should start */
+    transform-origin: bottom;
+    z-index: 10;
+    /* for getting alingned to the number right - translate will set the value on x and y axis */
+    /* translate 50 percent of the width backwards */
+    transform: translateX(-50%) rotate(calc(var(--rotation)*1deg));
+    
+}
+
+/* psuedo element  */
+.clock::after{
+    /* creates a new element that we can style on the div */
+    content: "";
+    position: absolute;
+    background-color: black;
+    z-index: 11;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    left: 50%;
+    /* to get a nice centerd square */
+    transform: translate(-50%,-50%);
+    /* for making it a circle */
+    border-radius: 50%;
+}
+
+/* the second class should be together with first class because they are not child with each others */
+.clock .hand.second{
+    width: 3px;
+    height: 45%;
+    background-color: red;
+}
+
+.clock .hand.minute{
+    width: 7px;
+    height: 40%;
+    background-color: black;
+}
+
+.clock .hand.hour{
+    width: 10px;
+    height: 35%;
+    background-color: black;
+}

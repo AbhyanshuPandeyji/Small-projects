@@ -1,0 +1,201 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Open Sans', sans-serif;
+}
+
+body{
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1677709679024-fc005fb4feb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-position: center;
+    background-size: cover;
+}
+
+/* for listitem styling */
+li{
+    list-style: none;
+
+}
+
+/* for links styling */
+a{
+    text-decoration: none;
+    color: aqua;
+    font-size: 1rem;
+}
+
+/* for after effect on link after hover */
+a:hover{
+    background-color: green;
+}
+
+
+/* for setting up parent tag pos and padding */
+header{
+    position: relative;
+    padding: 0 2rem;
+}
+
+/* for setting up the navbar and its properties */
+.navbar{
+    width: 100%;
+    height: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    /* there are many shorthand like h100 to define height and the unit 
+    after that and the jsc to juistify content center*/
+    justify-content: space-between;
+}
+
+/* for setting up navbar log */
+.navbar .logo a{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+/* display links of ul as in one line */
+.navbar .links{
+    display: flex;
+    /* shorthand for rowgap and column gap to specify the 
+    gutters between row and column(spacing between content tags - grid layout )*/
+    gap:2rem ;
+}
+
+
+/* styling the interaction between hamburger button */
+.navbar .toggle_btn{
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    /* not going to display till media query is applied then dislay block or 
+    something else */
+    display: none;
+}
+
+
+/* styling the get started button */
+.action-btn{
+    background-color: orange;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    /* Shorthand property combines four of the transition 
+    properties into a single property. */
+    transition: scale 0.2 ease;
+    /* A two-dimensional transformation is applied to an 
+    element through the 'transform' property. This property contains
+     a list of transform functions similar to those allowed by SVG. */
+    /* used to transform content into 2d 3d in a plane to be displayed good 
+    used in animations */
+    /* transform: ; */
+}
+
+/* styling the after effect on the getstarted button */
+.action-btn:hover{
+    /* it works as transform property of anykind in way
+    The scale CSS property allows you to specify scale transforms 
+    individually and independently of the transform property. 
+    This maps better to typical user interface usage, and saves
+     having to remember the exact order of transform functions to 
+     specify in the transform value. */
+
+    scale: 1.05;
+    color: #fff;
+}
+
+/* styling get started when in its normal form when not getting hovered */
+.action-btn:active{
+    scale: 0.95;
+}
+
+/* DROPDOWN MENU */
+/* when js applied will be not required here the style will be applied in the media query
+to style the display content in the manner and size you req on already defined list */
+.dropdown_menu{
+    /* for no inital display */
+    display: none;
+    /* parent element should be reletive for this otherwise it will cover it
+    define the exact position we want it in */
+    position: absolute;
+    /* defien position form right side */
+    right: 2rem;
+    top: 60px;
+    height: 0;
+    width: 300px;
+    background-color: rgba(255,255,255,0.1);
+    /* The backdrop-filter CSS property lets you apply graphical effects such as 
+    blurring or color shifting to the area behind an element. Because it applies 
+    to everything behind the element, to see the effect you must make the element
+     or its background at least partially transparent. 
+     to see its effect backgroud color should be have an opacity less than 1*/
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    /* transition height to use the height of the dropdown menu based on the height 
+    required by the box 
+    cubic-bezier to difine points in the axis of the page x1,y1,x2,y2 */
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* for when media query is fired the size of menu */
+
+.dropdown_menu ul li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown_menu .action-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* RESPONSIVE DESIGN for medium devices*/
+@media(max-width :  992px){
+    /* hiding the things we want to display when hamburger button is 
+    been clicked */
+    .navbar .links,
+    .navbar .action-btn
+    {
+        display: none;
+    }
+
+    .navbar .toggle_btn{
+        /* display hamburger button */
+        display: block;
+    }
+
+    .dropdown_menu{
+        /* to show navbar when size shrinks */
+        display: block;
+    }
+
+    .dropdown_menu li{
+        display: block;
+    }
+}
+
+
+/* RESPONSIVE DESIGN FOR SMALLER DEVICES */
+@media screen and (max-width : 576px) {
+    
+    .dropdown_menu{
+        /* to take it out in center of page and display full  */
+        display: block;
+        left: 2rem;
+        width: unset;
+    }
+}
+
