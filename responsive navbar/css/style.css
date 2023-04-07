@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+html{
+/* morden units instead of pixles */
+
+/* now whenever we type 1rem it will be equal to 10px only  */
+/* - 1rem = 10px rather than 1rem = 16px easy for calculation */
+    font-size: 62.5%;
+
+    /* to hide the extra content so user cant slide the site and the site doesn't look spaced out */
+    overflow: hidden;
+}
+
+body{
+    overflow: hidden;
+}
+
+
+.header{
+    /* header is the parent element for the navbar - so its position should be relative so the navbar don't go outside the box 
+    the positioning of the any content inside this header component now will be relative to the header position 
+    means if we give padding 100px left it will take the 100 left padding from where the box is located  */
+    padding: 0 4.8rem;
+    height: 10rem;
+    /* for side by side both elements in the header section flex set everything in one line */
+    display: flex;
+    /* to send elemets in each corner  image one side and list one side*/
+    justify-content: space-between;
+    /* to align-items in the center of the line */
+    align-items: center;
+    background-color: aquamarine;
+    
+}
+
+/* our headers logo */
+.header .logo{
+    height: 5rem;
+}
+
+
+/* 
+now in our list
+1st we want to remove its pre style or the decoration 
+2nd we want to show them side by side 
+3rd increase font size 
+*/
+/* style header for desktop section  ---------------------- */ 
+.navbar-list{
+    display: flex;
+    gap: 4.8rem;
+    list-style: none;
+}
+
+
+/* you will need to use two pseudo class link and visited for increase in font size and and color */
+/* there are many pseudo classes */
+/* remember the commas */
+.navbar-link:link,
+.navbar-link:visited{
+
+    /* inline-block so we can use the padding weight and other properties to these links */
+    display: inline-block;
+    /* to remove the underline */
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 2rem;
+    font-weight: 500;
+
+    color: black;
+
+    /* this will be use when we change font size when we hover */
+    /* when we will hover the color in it will last only 0.3 seconds - thats what transition do not animation but holds the time for it */
+    /* it will also set the time the links will take to appear on the screen on the initial load*/
+    transition: all 0.3s;
+
+}
+
+/* hover effect */
+.navbar-link:hover,
+.navbar-link:active
+{
+    color: cornflowerblue;
+}
+
+/* this is till done till to desktop version0-------------------------- */
+
+
+
+/* Hero and Service Section Starts Here */
+.section-hero,
+.section-services{
+
+    padding: 9.6rem 0;
+    background-color: aqua;
+    height: 60vh;
+
+
+    /* so the content in these section will display one after another and the content
+     will be vertically and horizontally align in center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-services{
+    background-color: chartreuse;
+}
+
+
+.section-hero,.section-services{
+    font-size: 3.2rem;
+}
+
+
+/* 
+
+step 5
+create mobile navbar icon button 
+step 6 
+style the mobile nav icon
+step 7 
+hide the mobile icon in desktop version 
+
+*/
+
+/* for not displaying the icons on the desktop version  */
+.mobile-navbar-btn{
+    display: none;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+
+
+
+/* styling the icons of the mobile navbar icons */
+.mobile-nav-icon{
+
+    width: 4rem;
+    height: 4rem;
+
+    color: black;
+
+}
+
+
+/* if we go to the mobile version also we only want to see the 
+hamburger menu to open the navbar
+and the close button when the navbar is open 
+not the both at together  */
+
+/* so to do that */
+/* only show the close button when navbar is open - for the close button */
+/* we take the class classname[we select its child in it with the classes - or any specific attribute like href or src ] */
+
+/* so classname/tagname[attribute to be targated name = specific attribute by name or all by just the attribute name]
+  classname/tagname[attribtename="specific attribute in that tag] */
+
+/* this part is to not display the close button until the navbar is open */
+.mobile-nav-icon[name="close-outline"]{
+    display: none;
+}
+
+
+/* step 8 - now in mobile version unhide the hidden icons and hide the original ones */
+/* hide the original ones means when the screen shrinks the list items will be display none 
+- in mobile version till the hamburger button is been clicked */
+
+/* so basically hide the list items and display the icons to open and close the list items of the navbar */
+
+
+/* this is the part of the responsiveness */
+
+
+/*
+=========================================== 
+Responsive Codes----------------------------- 
+============================================
+*/
+
+/* this is below the 998 px */
+
+
+/* 1em = 16px but how much is 980px in em -> 980/16 = 61.5 approx. 62em */
+@media(max-width: 62em){
+
+    /* to show mobile navbar icons */
+    .mobile-navbar-btn{
+        display: block;
+        /* making the z-index of the icon at high so we can see it above all the element 
+        even if there are element with more than one z-index means in 3d above the element in z plane */
+        z-index: 999;
+
+        /* throughout these mobile version the border will be same so it doesn't matter too much */
+        border: 3px solid black;
+    }
+
+    /* this should be relative so that the child element follow its boundaries - its a parent element to the nav */
+    .header{
+        position: relative;
+    }
+
+
+    /* to reduce the size of the logo */
+    .header .logo{
+        width: 40%;
+    }
+
+    /* to hide our navbar list items - to hide home about section etc  */
+    .navbar{
+        /* display: none; */
+
+        /* when ever you want the animation you can't use the display one 
+        whenever using the animation never go with the display property */
+
+        /* then what we use */
+
+        /* to display the navbar in full screen - 
+        this won't going to effect your site to be give you link every where it will be hidden till it been access*/
+        width: 100%;
+        height: 100vh;
+
+        background-color: white;
+
+        /* but this absolute - it is relative to the header position the box in which it is
+        so we need to make the headers position relative - it is the child element of the header component or the tag 
+        so how much we apply padding and the margin it will calculate according to the boundaries of the header element*/
+        /* this is works like a box model and box inside a box - parent(header) should be relative and the child element(nav) should be decide how much it will move depending upon the boundaries of the parent element */
+        /* it wont be stuck in the box but it will calculate the point of start of the moving direction depending upon the parent element boundaries or the border */
+        position: absolute;
+        /* to move list to relative to the top of the header */
+        top: 0;
+        /* to cover the left space uncovered by the navbar section - now it will cover full page*/
+        left:0;
+
+
+        /* now we want it to display in the column style and in block and align all in the center */
+
+        display: flex;
+        /* horizontally align in top */
+        justify-content: center;
+        /* vertically align to display in the center of the page */
+        align-items: center;
+
+        /* but now we cant use here flex direction column - its useless here */
+        /* flex-direction: column; */
+
+        /* because we can only target the child through parent element so there should be direct relation to it */
+        /* in this case it is the ul of the li - ul is type of listing and the li is the listed items */
+
+
+        /* to get the transition of the navbar form right to left side to cover the screen and go back when its been closed */
+        /* this will shift the whole bar into the right side and hide the navbar */
+        transform: translateX(100%);
+        /* when we click to view navbar we will make it 0% to show the navbar */
+
+
+        /* for smooth effect for that transform  */
+        transition: all 0.5s linear;
+
+
+        /* instead of the display none because of the animation need  */
+        /* we use */
+        /* nothing will be shown on the right side when user slide the page */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+
+        /* but now we dont want the user to be able to slide it will be bad for the site so see it like that  */
+        /* so for that we go to the html of our page and set the overflow to hidden */
+
+
+    }
+
+    /* step 9 is been completed soo far */
+
+    /* step 10 change the look of the navbar for the mobile version - very important  */
+    /* that mobile version look and feel and the change in the icon */
+
+
+    /* this is to display the list item in column wise and in the center  */
+    .navbar-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+/* 
+    active class will come first because it it above the list content of the navbar 
+    and it is in the main parent element which is header class */
+
+    /* this is to un-hide the navbar if the active class is present in the header section */
+    
+    .active .navbar{
+
+        transform: translateX(0%);
+        opacity: 1;
+        visibility: visible;
+        pointer-events:auto ;
+    }
+
+    /* we also want to show the close icon when the navbar is open this will also be done when header have the active class */
+    /* we need to switch between the icons */
+
+    /* this is to display the close button when the navbar is open and the header have the active class */
+    .active .mobile-navbar-btn .mobile-nav-icon[name="close-outline"]{
+        display: block;
+    }
+
+    /* this is to hide the menu/hamburger button when the navbar is open and the header have the active class */
+    .active .mobile-navbar-btn .mobile-nav-icon[name="menu-outline"]{
+        display: none;
+    }
+
+
+    /* now every thing is totally gonna be dependent upon the active class presence - this will be done by the javascript */
+    
+
+
+}
+
+/* html and css work is done now we will use the java script */
+/* if we click it will open and we can see the navbar 
+and when we click the again it got hidden 
+
+for that we will use a active class to add and remove the navbar visibility on our screen ]
+based on the button click */
+
+
+/* .active class will be added by the event listener and the classlist property and in it the add and remove the classlist
+we can do add or remove event listener or we can do add or remove the class list */
+
+
+
+
+/*
+======================================================== 
+Responsive code for the smaller devices than like mobiles 
+========================================================
+*/
+
+/* this is for the devices smaller size than 560px */
+
+/* these responsiveness  and heights will be totally depend upon your projects 
+the styling will be depended upon your project and the spacing and the positioning too 
+the animation and the transformation will also depend upon your need and want of the project
+
+
+-> the only thing will not change is the logic and the displaying the specific part of the navbar you want to show logic
+-> the javascript will have to have the active class to add and remove from the the main parent component 
+-> the parent element should atleast to be relative so the child element will follow its boundary to make its starting position depend on it 
+-> the display of the list items/ the specific items in the parent element holding the content should be display block when its on desktop 
+and be display none when its on the mobile - or if animaiton need then rather than displying it none we use
+-> transform translateX to 100 property , with the visibility and the opacity 0 
+and when it is on the mobile display its translate should be zero to come in center of page than slide in the right side 
+the overflow of the page should be hidden - the user cannot silde the site and it cutout the content that's been wondering outside the site 
+also helps us to identify where to adjust our sites outline - done by doing overflow of the html and the boy to be hidden
+-> the button icons will always be have to switch between when then navbar is open or close if open then the close button icon 
+if the navbar is close then menu or hamburger icon to open the navbar
+-> the display of the close button will be hidden in the desktop and the mobile version both till the navbar is open
+done by selecting the parent element and then the class of the icon to identify by parentclassname[name="classname of the icon"]
+and the burger button will be hidden in desktop initially and in mobile version it will be visible till the navbar is open
+it will be hidden when active class will be added to the header done as same as the close but instead of display block on small screen devices
+when navbar is open it will be display none when navbar is open
+-> the active class will come before the navbar/the parent element of the class that holding the list items of the links 
+could be the ul or a div but the active class will come before that because it is the class that going to be added to the main header of the items of the navbar 
+in which everything should be present the image and the navlist items and the list items are the specific parts of the header tag so as will it be to the active class
+when it will be added so remember that and in the end of the active it just depend upon you now how you want to display it here's the example form the code
+
+
+.active .navbar{
+
+    transform: translateX(0%);
+    opacity: 1;
+    visibility: visible;
+    pointer-events:auto ;
+} */
+
+
+@media(max-width: 35em){
+
+    .header{
+        padding: 0 2.4rem;
+    }
+
+    .header .logo{
+        width: 60%;
+    }
+
+}

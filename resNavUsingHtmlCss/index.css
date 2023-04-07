@@ -179,7 +179,7 @@ to style the display content in the manner and size you req on already defined l
 
     .dropdown_menu{
         /* to show navbar when size shrinks */
-        display: block;
+        display: none;
     }
 
     .dropdown_menu li{
